@@ -9,7 +9,7 @@ export function SignInButton() {
 
     console.log(session)
 
-    return session ? ( // Código legal
+    return session ? ( // Código que define se o usuário está logado ou não
         <button
          type="button"
          className={styles.signInButton}

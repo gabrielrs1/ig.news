@@ -48,6 +48,9 @@ export default function Home({ product }: HomeProps) {
   )
 }
 
+// Anterior - getServerSideProps carrega no servidor node do next e essas informações todas as vezes que fosse acessada a página
+// getStaticProps após carregar a página 1 vez é para salvar o html (deixa a página estática), assim todas as outras requisições utilizam essa página estática, aumentando a performance
+// Mas, tudo depende do contexto que essa informação está.
 export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve("price_1J2R3yHvWeLNiAmA3fIhfyr9")
 
@@ -56,7 +59,7 @@ export const getStaticProps: GetStaticProps = async () => {
     amount: new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
-    }).format(price.unit_amount / 100), // passando valor para centavos
+    }).format(price.unit_amount / 100), // passando valor para centavos, melhor de manipular
   }
 
   return {
