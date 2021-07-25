@@ -7,8 +7,6 @@ import styles from "./styles.module.scss"
 export function SignInButton() {
     const [session] = useSession()
 
-    console.log(session)
-
     return session ? ( // Código que define se o usuário está logado ou não
         <button
          type="button"
